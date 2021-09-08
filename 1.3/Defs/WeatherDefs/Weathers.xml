@@ -2,11 +2,11 @@
 <Defs>
   <WeatherDef>
     <defName>Sinnamon_Windy</defName>
-    <label>blessed wind</label>
+    <label>whirlwind</label>
     <description>Wind is increasing the wind turbine output.</description>
 	<temperatureRange>99~100</temperatureRange>
 	<windSpeedFactor>1.5</windSpeedFactor>
-	<windSpeedOffset>1</windSpeedOffset>
+	<windSpeedOffset>2</windSpeedOffset>
     <repeatable>true</repeatable>
     <favorability>Good</favorability>
     <perceivePriority>2</perceivePriority>

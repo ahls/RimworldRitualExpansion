@@ -4,9 +4,132 @@ using System.Linq;
 using RimWorld;
 using RimWorld.Planet;
 using Verse;
-
+using UnityEngine;
 namespace Sinnamon_Ritual
 {
+	public static class Utilities
+	{
+		public static string reduceGameCondition(List<GameCondition> currentConditions,HashSet<string> reducingGC, HashSet<string> endingGC , int divider, string reducingMessage,string endingMessage)
+		{
+			string affectedEvents = "";
+			foreach (var condition in currentConditions)
+			{
+				//heat waㅍㄷ 나 toxic fallout 지속시간 반감
+				if (reducingGC != null && reducingGC.Contains(condition.def.defName))
+				{
+					affectedEvents += reducingMessage.Translate(condition.def.label);
+					condition.Duration /= divider;
+				}
+				if (endingGC != null &&endingGC.Contains(condition.def.defName))
+				{
+					affectedEvents += endingMessage.Translate(condition.def.label);
+					condition.End();
+				}
+			}
+			return affectedEvents;
+		}
+
+	}
+
+	public class Sinnamon_GameCondition_Aurora : GameCondition
+	{
+		private int curColorIndex = -1;
+		private int prevColorIndex = -1;
+		private float curColorTransition;
+		private static readonly Color[] Colors = new Color[]
+		{
+			new Color(0f, 0.5f, 0f),
+			new Color(0.1f, 0.5f, 0f),
+			new Color(0f, 0.5f, 0.2f),
+			new Color(0.3f, 0.5f, 0.3f),
+			new Color(0f, 0.2f, 0.5f),
+			new Color(0f, 0f, 0.5f),
+			new Color(0.5f, 0f, 0f),
+			new Color(0.3f, 0f, 0.5f)
+		};
+		public override void Init()
+		{
+			base.Init();
+			this.curColorIndex = Rand.Range(0, Sinnamon_GameCondition_Aurora.Colors.Length);
+			this.prevColorIndex = this.curColorIndex;
+			this.curColorTransition = 1f;
+		}
+		public override void ExposeData()
+		{
+			base.ExposeData();
+			Scribe_Values.Look<int>(ref this.curColorIndex, "curColorIndex", 0, false);
+			Scribe_Values.Look<int>(ref this.prevColorIndex, "prevColorIndex", 0, false);
+			Scribe_Values.Look<float>(ref this.curColorTransition, "curColorTransition", 0f, false);
+		}
+		public Color CurrentColor
+		{
+			get
+			{
+				return Color.Lerp(Sinnamon_GameCondition_Aurora.Colors[this.prevColorIndex], Sinnamon_GameCondition_Aurora.Colors[this.curColorIndex], this.curColorTransition);
+			}
+		}
+		private int TransitionDurationTicks
+		{
+			get
+			{
+				if (!base.Permanent)
+				{
+					return 280;
+				}
+				return 3750;
+			}
+		}
+		public override int TransitionTicks
+		{
+			get
+			{
+				return 200;
+			}
+		}
+		private int GetNewColorIndex()
+		{
+			return (from x in Enumerable.Range(0, Sinnamon_GameCondition_Aurora.Colors.Length)
+					where x != this.curColorIndex
+					select x).RandomElement<int>();
+		}
+		public override void GameConditionTick()
+		{
+			this.curColorTransition += 1f / (float)this.TransitionDurationTicks;
+			if (this.curColorTransition >= 1f)
+			{
+				this.prevColorIndex = this.curColorIndex;
+				this.curColorIndex = this.GetNewColorIndex();
+				this.curColorTransition = 0f;
+			}
+		}
+		public override SkyTarget? SkyTarget(Map map)
+		{
+			Color currentColor = this.CurrentColor;
+			SkyColorSet colorSet = new SkyColorSet(Color.Lerp(Color.white, currentColor, 0.075f) * this.Brightness(map), new Color(0.92f, 0.92f, 0.92f), Color.Lerp(Color.white, currentColor, 0.025f) * this.Brightness(map), 1f);
+			return new SkyTarget?(new SkyTarget(Mathf.Max(GenCelestial.CurCelestialSunGlow(map), 0.25f), colorSet, 1f, 1f));
+		}
+		private float Brightness(Map map)
+		{
+			return Mathf.Max(0.73f, GenCelestial.CurCelestialSunGlow(map));
+		}
+		// Token: 0x0600483D RID: 18493 RVA: 0x000D4E09 File Offset: 0x000D3009
+		public override float SkyGazeChanceFactor(Map map)
+		{
+			return 8f;
+		}
+
+		// Token: 0x0600483E RID: 18494 RVA: 0x0017EF07 File Offset: 0x0017D107
+		public override float SkyGazeJoyGainFactor(Map map)
+		{
+			return 5f;
+		}
+
+		// Token: 0x0600483F RID: 18495 RVA: 0x0017EF0E File Offset: 0x0017D10E
+		public override float SkyTargetLerpFactor(Map map)
+		{
+			return GameConditionUtility.LerpInOutValue(this, (float)this.TransitionTicks, 1f);
+		}
+	}
 	public class Sinnamon_RitualExtension : DefModExtension
 	{
 		public List<MemeDef> forbiddenMemeAny;

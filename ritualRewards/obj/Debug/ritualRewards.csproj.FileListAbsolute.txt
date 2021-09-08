@@ -6,3 +6,9 @@ D:\steam\steamapps\common\RimWorld\Mods\RitualRewards\ritualRewards\obj\Debug\ri
 D:\steam\steamapps\common\RimWorld\Mods\RitualRewards\ritualRewards\obj\Debug\ritualRewards.pdb
 D:\steam\steamapps\common\RimWorld\Mods\RitualRewards\Assemblies\ritualRewards.dll
 D:\steam\steamapps\common\RimWorld\Mods\RitualRewards\Assemblies\ritualRewards.pdb
+C:\Users\coaru\Desktop\RimworldMods\RitualRewards\Assemblies\ritualRewards.dll
+C:\Users\coaru\Desktop\RimworldMods\RitualRewards\Assemblies\ritualRewards.pdb
+C:\Users\coaru\Desktop\RimworldMods\RitualRewards\ritualRewards\obj\Debug\ritualRewards.csproj.AssemblyReference.cache
+C:\Users\coaru\Desktop\RimworldMods\RitualRewards\ritualRewards\obj\Debug\ritualRewards.csproj.CoreCompileInputs.cache
+C:\Users\coaru\Desktop\RimworldMods\RitualRewards\ritualRewards\obj\Debug\ritualRewards.dll
+C:\Users\coaru\Desktop\RimworldMods\RitualRewards\ritualRewards\obj\Debug\ritualRewards.pdb

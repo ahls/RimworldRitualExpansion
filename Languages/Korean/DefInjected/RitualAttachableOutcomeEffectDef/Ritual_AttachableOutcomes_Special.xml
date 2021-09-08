@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 	<Sinnamon_WindBlessing.label>돌개바람</Sinnamon_WindBlessing.label>
-	<Sinnamon_WindBlessing.effectDesc>폭염과 독성낙진의 지속시간을 반감시키고, 풍력발전 효율을 높입니다.</Sinnamon_WindBlessing.effectDesc>
+	<Sinnamon_WindBlessing.effectDesc>폭염의 지속시간을 반감시키고, 풍력발전 효율을 높입니다.</Sinnamon_WindBlessing.effectDesc>
 	<Sinnamon_WindBlessing.letterInfoText>시원한 바람이 정착지를 휩씁니다.</Sinnamon_WindBlessing.letterInfoText>
 
 	<Sinnamon_SunBlessing.label>해바라기</Sinnamon_SunBlessing.label>
-	<Sinnamon_SunBlessing.effectDesc>비와 일식을 즉시 중단시키고, 한파와 화산겨울의 지속시간을 반감시킵니다.</Sinnamon_SunBlessing.effectDesc>
+	<Sinnamon_SunBlessing.effectDesc>날씨를 바꾸고 일식을 중단시키며, 한파의 지속시간을 반감시킵니다.</Sinnamon_SunBlessing.effectDesc>
 	<Sinnamon_SunBlessing.letterInfoText>태양이 당당한 자태를 드러냅니다.</Sinnamon_SunBlessing.letterInfoText>
+	
+	<Sinnamon_Raincalling.label>비바라기</Sinnamon_Raincalling.label>
+	<Sinnamon_Raincalling.effectDesc>날씨를 바꾸고 독성낙진과 화산겨울의 지속시간을 반감시킵니다.</Sinnamon_Raincalling.effectDesc>
+	<Sinnamon_Raincalling.letterInfoText>태양이 당당한 자태를 드러냅니다.</Sinnamon_Raincalling.letterInfoText>
 	
 	<Sinnamon_EclipseBlessing.label>검은 하늘</Sinnamon_EclipseBlessing.label>
 	<Sinnamon_EclipseBlessing.effectDesc>혹점 폭발을 즉시 중단시키고 일식을 일으킵니다.</Sinnamon_EclipseBlessing.effectDesc>
@@ -39,6 +43,16 @@
 	<Sinnamon_DustToDust.label>먼지에서 먼지로</Sinnamon_DustToDust.label>
 	<Sinnamon_DustToDust.effectDesc>썩거나 백골화된 시체를 전부 제거합니다.</Sinnamon_DustToDust.effectDesc>
 	<Sinnamon_DustToDust.letterInfoText>재에서 재로, 먼지에서 먼지로</Sinnamon_DustToDust.letterInfoText>
+	
+	<Sinnamon_CallVenerated.label>신성한 동물 부르기</Sinnamon_CallVenerated.label>
+	<Sinnamon_CallVenerated.effectDesc>신성한 동물을 부릅니다.</Sinnamon_CallVenerated.effectDesc>
+	
+	<Sinnamon_RitualStrip.label>무장해제</Sinnamon_RitualStrip.label>
+	<Sinnamon_RitualStrip.effectDesc>적 일부가 옷을 벗습니다.</Sinnamon_RitualStrip.effectDesc>
+	
+	<Sinnamon_Aurora.label>오로라</Sinnamon_Aurora.label>
+	<Sinnamon_Aurora.effectDesc>오로라를 생성합니다.</Sinnamon_Aurora.effectDesc>
+	<Sinnamon_Aurora.letterInfoText>하늘에서 빛이 일렁입니다.</Sinnamon_Aurora.letterInfoText>
 	
 	
 </LanguageData>
